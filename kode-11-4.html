@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>AJAX DELETE</title>
+</head>
+<body>
+    <h1>AJAX DELETE</h1>
+    <input type="text" name="id" id="id" placeholder="Ketik ID data yang mau dihapus disini">
+    <button id="btnHapusData">Hapus Data</button>
+    <div id="tampilanData"></div>
+    <script>
+        var tampilanData = document.getElementById("tampilanData");
+
+        function AjaxDELETE() {
+            var inputID = document.getElementById("id").value;
+
+            var data_file = "api.php/mahasiswa/" + inputID;
+            var http_request = new XMLHttpRequest();
+            try {
+                // Opera 8.0+, Firefox, Chrome, Safari
+                http_request = new XMLHttpRequest();
+            } catch (e) {
+                // Internet Explorer Browsers
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        // Ada masalah
+                        alert("Browser rusak!");
+                        return false;
+                    }
+                }
+            }
+            http_request.onreadystatechange = function() {
+                if (http_request.readyState == 4) {
+                    // Fungsi JavaScript JSON.parse untuk parsing data JSON
+                    var jsonObj = JSON.parse(http_request.responseText);
+                    tampilkanData(jsonObj);
+                }
+            }
+            http_request.open("DELETE", data_file, true);
+            http_request.send();
+        }
+
+        // Fungsi untuk menampilkan data
+        function tampilkanData(dataRAW) {
+            tampilanData.innerHTML = "Status: " + dataRAW.status + "<br/>";
+            tampilanData.innerHTML += "Data -> ID: " + dataRAW.id;
+        }
+        document.getElementById("btnHapusData").addEventListener("click", AjaxDELETE);
+    </script>
+</body>
+</html>

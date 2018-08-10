@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Layout: Box Model</title>
+    <style>
+        .simple {
+            width: 500px;
+            margin: 20px auto;
+            border: solid blue 10px;
+        }
+        .fancy {
+            width: 500px;
+            margin: 20px auto;
+            padding: 50px;
+            border-width: 10px;
+            border: solid blue 10px;
+        }
+        .simple-box-sizing {
+            width: 500px;
+            margin: 20px auto;
+            border: solid blue 10px;
+            -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+        }
+        .fancy-box-sizing {
+            width: 500px;
+            margin: 20px auto;
+            padding: 50px;
+            border: solid blue 10px;
+            -webkit-box-sizing: border-box;
+                -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="simple">
+        Lebih kecil...
+    </div>
+    <div class="fancy">
+        Lebih besar!
+    </div>
+    <div class="simple-box-sizing">
+        Sekarang...
+    </div>
+    <div class="fancy-box-sizing">
+        Sama!
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <title>Atribut</title>
+</head>
+<body>
+    <p data-classified="secret">Kunci Rahasia adalah 280977.</p>
+    <p data-classified="unclassified">Tangan saya dua.</p>
+    <script>
+        let paras = document.body.getElementsByTagName("p");
+        for (let para of Array.from(paras)) {
+            if (para.getAttribute("data-classified") == "secret") {
+                para.remove();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+   <head>
+        <!-- Percobaan I-9. Formulir dengan Unggah Berkas -->
+        <title>Formulir dengan Unggah Berkas</title>
+   </head>
+   <body>
+        <form method="POST" action="prosesUnggah.php" enctype="multipart/form-data">
+            <table border="1">
+                <tr>
+                    <td><label for="kota">Kota:</label></td>
+                    <td>
+                        <select name="kota" id="kota">
+                            <option value="">pilih kota...</option>
+                            <option value="bdg">Bandar Lampung</option>
+                            <option value="jkt">Metro</option>
+                            <option value="sby">Kotabumi</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                <td><label for="kerja">Pekerjaan:</label></td>
+                    <td>
+                        <select name="kerja" id="kerja" size="4">
+                            <option value="a">Mahasiswa</option>
+                            <option value="b">Pegawai swasta</option>
+                            <option value="c">Pegawai negeri</option>
+                            <option value="d">Wiraswasta</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="bahasa">Bahasa:</label><br>(bisa lebih dari satu)</td>
+                    <td>
+                        <select name="bahasa" id="bahasa" size="4" multiple>
+                            <option value="id">Indonesia</option>
+                            <option value="en">Inggris</option>
+                            <option value="ch">Cina</option>
+                            <option value="fr">Jepang</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hobi:<br>(bisa lebih dari satu)</td>
+                    <td>
+                       <input type="checkbox" name="hobi" value="1">Berenang<br>
+                        <input type="checkbox" name="hobi" value="2">Memanah<br>
+                        <input type="checkbox" name="hobi" value="3">Berkuda
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="foto">Foto:</label></td>
+                    <td><input type="file" name="foto" id="foto" size="10"></td>
+                </tr>
+            </table>
+            <button type="submit">Kirim </button>
+            <button type="reset">Reset </button>
+            <input type="hidden" name="halaman" value="2">
+        </form>
+   </body>
+</html>

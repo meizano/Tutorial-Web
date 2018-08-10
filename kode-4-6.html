@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Layout: float</title>
+    <style>
+        img {
+            float: right;
+            margin: 0 0 1em 1em;
+            border: solid magenta 10px;
+        }
+        section {
+            border: solid green 10px;
+        }
+        .box {
+            float: left;
+            width: 200px;
+            height: 100px;
+            margin: 1em;
+            border: solid magenta 10px;
+        }
+        .after-box {
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p>
+            <img src="image/logo.png" alt="Logo" /> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+        </p>
+    </div>
+    <div class="box"> box </div>
+    <section>.1.</section>
+    <section class="after-box">.2.</section>
+</body>
+</html>

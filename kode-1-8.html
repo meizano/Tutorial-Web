@@ -1,0 +1,36 @@
+<html>
+   <head>
+        <!-- Percobaan I-8. Formulir -->
+        <title>Formulir</title>
+   </head>
+   <body>
+        <form method="GET" action="prosesPost.php">  Silahkan isi data Anda
+            <input type="hidden" name="halaman" value="1">
+            <table border="1">
+                <tr>
+                    <td><label for="nama">Nama lengkap:</label></td>
+                    <td><input type="text" name="nama" id="nama" maxlength="40" size="20"></td>
+                </tr>
+                <tr>
+                    <td><label for="pass">Password:</label></td>
+                    <td><input type="password" name="pass" id="pass" maxlength="8" size="8"></td>
+                </tr>
+                <tr>
+                    <td><label for="jenkel">Jenis kelamin:</label></td>
+                    <td><input type="radio" name="jenkel" id="jenkel" value="L">Laki-laki<br>
+                    <input type="radio" name="jenkel" id="jenkel" value="P">Perempuan</td>
+                </tr>
+                <tr>
+                    <td><label for="alamat">Alamat:</label></td>
+                    <td><textarea rows="3" cols="30"  name="alamat" id="alamat"></textarea></td>
+                </tr>
+                <tr>
+                    <td><label for="bayar">Sudah bayar?</label></td>
+                    <td><input type="checkbox"  name="bayar" id="bayar">Sudah</td>
+                </tr>
+            </table>
+            <input type="submit" value="Kirim">
+            <input type="reset" value="Reset">
+        </form>
+   </body>
+</html>

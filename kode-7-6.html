@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <title>Layout</title>
+</head>
+<body>
+    <p style="border: 3px solid red">
+        Dalam kotak
+    </p>
+    <script>
+        let para = document.body.getElementsByTagName("p")[0];
+        console.log("clientHeight:", para.clientHeight);
+        console.log("offsetHeight:", para.offsetHeight);
+    </script>
+
+    <p><span id="satu"></span></p>
+    <p><span id="dua"></span></p>
+    <script>
+        function time(name, action) {
+            let start = Date.now(); // waktu dalam milliseconds
+            action();
+            console.log(name, "took", Date.now() - start, "ms");
+        }
+        time("naive", () => {
+            let target = document.getElementById("satu");
+            while (target.offsetWidth < 2000) {
+                target.appendChild(document.createTextNode("X"));
+            }
+        });
+        // → naive perlu 32 ms
+        time("clever", function() {
+            let target = document.getElementById("dua");
+            target.appendChild(document.createTextNode("XXXXX"));
+            let total = Math.ceil(2000 / (target.offsetWidth / 5));
+            target.firstChild.nodeValue = "X".repeat(total);
+        });
+        // → clever perlu 1 ms
+    </script>
+</body>
+</html>

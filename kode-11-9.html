@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Fetch API: DELETE</title>
+</head>
+<body>
+    <h1>Fetch API: DELETE</h1>
+    <input type="text" name="id" id="id" placeholder="Ketik ID data yang mau dihapus disini">
+    <button id="btnHapusData">Hapus Data</button>
+    <div id="tampilanData"></div>
+    <script>
+        var tampilanData = document.getElementById("tampilanData");
+
+        function fetchAPIDELETE() {
+            var inputID = document.getElementById("id").value;
+            url = 'api.php/mahasiswa/' + inputID;
+            fetch(url,
+                    {
+                        method: 'DELETE'
+                    }
+                )
+                .then((resp) => resp.json())
+                .then(function(data) {
+                    tampilkanData(data);
+                })
+                .catch(function(error) {
+                    console.log(JSON.stringify(error));
+                });
+        }
+
+        // Fungsi untuk menampilkan data
+        function tampilkanData(dataRAW) {
+            tampilanData.innerHTML = "Status: " + dataRAW.status + "<br/>";
+            tampilanData.innerHTML += "ID data: " + dataRAW.id;
+        }
+        document.getElementById("btnHapusData").addEventListener("click", fetchAPIDELETE);
+    </script>
+</body>
+</html>

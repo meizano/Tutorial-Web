@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Animation: Play State</title>
+    <style>
+        .clock {
+            align-items: center;
+            border-radius: 50%;
+            border: solid 25px DarkTurquoise;
+            display: flex;
+            height: 200px;
+            justify-content: center;
+            margin: 80px auto 0;
+            width: 200px;
+            margin: 80px auto 0;
+        }
+        .clock:after {
+            border-radius: 50%;
+            border: solid 15px DarkTurquoise;
+            content: "";
+            height: 20px;
+            left: 50%;
+            margin-left: -26px;
+            position: absolute;
+            top: 45px;
+            width: 20px;
+        }
+        .hand {
+            align-items: center;
+            background: DarkTurquoise;
+            border-radius: 50%;
+            display: flex;
+            height: 20px;
+            justify-content: center;
+            width: 20px;
+            z-index: 2;
+        }
+        .clock:hover .hand:after {
+            animation-play-state: paused;
+            cursor: pointer;
+        }
+        .hand:after {
+            content: '';
+            height: 80px;
+            width: 8px;
+            background: DarkTurquoise;
+            border-radius: 4px;
+            top: -40px;
+            position: relative;
+            animation: timer 4s linear infinite;
+            transform-origin: 48% 100%;
+            animation-play-state: running;
+        }
+        .h1 {
+            color: DarkTurquoise;
+            font-family: lato;
+            font-size: 20px;
+            padding-top: 40px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        @-webkit-keyframes timer {
+            0% {
+                transform: none;
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        @keyframes timer {
+            0% {
+                transform: none;
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class='clock'>
+        <div class='hand'></div>
+    </div>
+    <div class='h1'>Hover untuk jeda</div>
+</body>
+</html>

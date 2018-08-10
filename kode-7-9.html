@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Animasi DOM</title>
+</head>
+<body>
+   <p>Cari sendiri gambar kupu-kupunya.</p>
+    <p style="text-align: center">
+        <img src="img/kupu.png" style="position: relative">
+    </p>
+    <script>
+        let kupu = document.querySelector("img");
+        let angle = Math.PI / 2;
+
+        function animate(time, lastTime) {
+            if (lastTime != null) {
+                angle += (time - lastTime) * 0.001;
+            }
+            kupu.style.top = (Math.sin(angle) * 20) + "px";
+            kupu.style.left = (Math.cos(angle) * 200) + "px";
+            requestAnimationFrame(newTime => animate(newTime, time));
+        }
+        requestAnimationFrame(animate);
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5: Audio & Video</title>
+    <script type="text/javascript">
+        function PlayVideo() {
+            var v = document.getElementsByTagName("video")[0];
+            v.play();
+        }
+    </script>
+</head>
+<body>
+    <audio controls autoplay>
+        <source src="asset/Indonesia-Raya.mp3" type="audio/mp3" />
+        <source src="asset/Indonesia-Raya.ogg" type="audio/ogg" />
+        <source src="asset/Indonesia-Raya.wav" type="audio/wav" /> browser tidak mendukung elemen audio.
+    </audio>
+    <form>
+        <video width="300" height="200" src="asset/Indonesia-Raya.mp4">
+            browser tidak mendukung elemen video.
+        </video>
+        <br />
+        <input type="button" onclick="PlayVideo();" value="Play" />
+    </form>
+</body>
+</html>

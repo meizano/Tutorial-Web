@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5: Formulir 2.0</title>
+    <script>
+        function tampilkanHasil() {
+            url = document.forms["formulir"]["situs"].value;
+            document.forms["formulir"]["hasil"].value = url;
+        }
+    </script>
+</head>
+<body>
+    <form name="formulir">
+        Tanggal :
+        <input type="date" name="tanggal" required/>
+        <br/> Jam :
+        <input type="time" name="jam" />
+        <br/> Angka :
+        <input type="number" min="0" max="10" step "1" value="5" name="angka" autofocus/>
+        <br/> email :
+        <input type="email" name="email" placeholder="email@example.com" />
+        <br/> URL :
+        <input type="url" name="situs" />
+        <br/>
+        <input type="submit" value="Hasil" onclick="tampilkanHasil();" />
+        <br/>
+        <output name="hasil"></output>
+    </form>
+</body>
+</html>

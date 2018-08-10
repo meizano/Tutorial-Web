@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5: Drag & Drop</title>
+    <style>
+        #boxA,
+        #boxB {
+            float: left;
+            padding: 10px;
+            margin: 10px;
+            -moz-user-select: none;
+        }
+        #boxA {
+            background-color: rgb(255, 160, 51);
+            width: 75px;
+            height: 75px;
+        }
+        #boxB {
+            background-color: rgb(102, 255, 127);
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+    <script type="text/javascript">
+        function dragStart(ev) {
+            ev.dataTransfer.effectAllowed = 'move';
+            ev.dataTransfer.setData("Text", ev.target.getAttribute('id'));
+            ev.dataTransfer.setDragImage(ev.target, 0, 0);
+            return true;
+        }
+
+        function dragEnter(ev) {
+            event.preventDefault();
+            return true;
+        }
+
+        function dragOver(ev) {
+            return false;
+        }
+
+        function dragDrop(ev) {
+            var src = ev.dataTransfer.getData("Text");
+            ev.target.appendChild(document.getElementById(src));
+            ev.stopPropagation();
+            return false;
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <div>Coba gerakkan kotak jingga ke kotak hijau.</div>
+
+        <div id="boxA" draggable="true" ondragstart="return dragStart(event)">
+            <p>Geser saya</p>
+        </div>
+        <div id="boxB" ondragenter="return dragEnter(event)" ondrop="return dragDrop(event)" ondragover="return dragOver(event)">Brankas</div>
+    </center>
+</body>
+</html>

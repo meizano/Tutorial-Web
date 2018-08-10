@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5: Canvas</title>
+    <script>
+        function animasi() {
+            setInterval(gambarCinta, 100);
+        }
+        function gambarCinta() {
+
+            // mendapatkan elemen canvas pada DOM
+            var canvas = document.getElementById('canvasku');
+
+            // Mengecek apakah canvas didukung
+            if (canvas.getContext) {
+
+                // menggunakan getContext untuk memakai canvas sebagai alat gambar
+                var ctx = canvas.getContext('2d');
+
+                // warna fill
+                ctx.fillStyle = 'rgba(0,253,206,0.4)';
+                // warna stroke
+                ctx.strokeStyle = 'rgba(0,153,55,0.4)';
+                ctx.save();
+                ctx.translate(200, 200);
+
+                var time = new Date();
+                ctx.rotate(((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds());
+                ctx.translate(0, 28.5);
+
+                // Membuat simbol cinta
+                ctx.beginPath();
+                ctx.moveTo(75, 40);
+                ctx.bezierCurveTo(75, 37, 70, 25, 50, 25);
+                ctx.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5);
+                ctx.bezierCurveTo(20, 80, 40, 102, 75, 120);
+                ctx.bezierCurveTo(110, 102, 130, 80, 130, 62.5);
+                ctx.bezierCurveTo(130, 62.5, 130, 25, 100, 25);
+                ctx.bezierCurveTo(85, 25, 75, 37, 75, 40);
+                ctx.fill();
+
+                ctx.restore();
+            } else {
+                alert('Membutuhkan browser yang mendukung canvas');
+            }
+        }
+    </script>
+</head>
+<body onload="animasi();">
+    <canvas id="canvasku" width="400" height="400"></canvas>
+</body>
+</html>

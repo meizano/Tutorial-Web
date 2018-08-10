@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript: Penggunaan</title>
+    <script>
+        function jsDiHead() {
+            alert("JS di HEAD")
+        }
+    </script>
+    <!--
+      * Buat berkas bernama filename.js dan ketikkan kode berikut:
+        function jsDiFile() {
+          alert("Ini dari File")
+        }
+      -->
+    <script src="filename.js"></script>
+</head>
+<body>
+    <input type="button" onclick="jsDiHead()" value="JS di HEAD" />
+    <script>
+        document.write("JS di BODY")
+    </script>
+    <input type="button" onclick="jsDiFile()" value="JS di file" />
+</body>
+</html>

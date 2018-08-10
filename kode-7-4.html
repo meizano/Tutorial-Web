@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>Membuat Node</title>
+</head>
+<body>
+   <p>Cari sendiri gambar kupu-kupu dan bunganya.</p>
+    <p><img src="img/kupu.png" alt="kupu"> di dalam
+        <img src="img/bunga.png" alt="bunga">.</p>
+    <p><button onclick="replaceImages()">Ganti</button></p>
+    <script>
+        function replaceImages() {
+            let images = document.body.getElementsByTagName("img");
+            for (let i = images.length - 1; i >= 0; i--) {
+                let image = images[i];
+                if (image.alt) {
+                    let text = document.createTextNode(image.alt);
+                    image.parentNode.replaceChild(text, image);
+                }
+            }
+        }
+    </script>
+</body>
+</html>

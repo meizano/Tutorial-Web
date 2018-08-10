@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript: Percabangan</title>
+</head>
+<body>
+    <script>
+        // if ... else ...
+        var umur = 15;
+
+        if (umur > 17) {
+            document.write("<b>Boleh punya KTP</b>");
+        } else {
+            document.write("<b>Pakai KTA saja</b>");
+        }
+        // switch
+        var grade = 'A';
+        document.write("<br />switch dimulai...<br />");
+        switch (grade) {
+            case 'A':
+                document.write("Sempurna<br />");
+                break;
+            case 'B':
+                document.write("Bagus<br />");
+                break;
+            case 'C':
+                document.write("Pas<br />");
+                break;
+            case 'D':
+                document.write("Pikir-pikir<br />");
+                break;
+            case 'F':
+                document.write("Ngulang deh<br />");
+                break;
+            default:
+                document.write("Belum lengkap<br />")
+        }
+        document.write("switch telah selesai");
+    </script>
+</body>
+</html>

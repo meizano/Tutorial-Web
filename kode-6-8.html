@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript: redirect, timeout, & print</title>
+</head>
+<body>
+    <script>
+        function Redirect() {
+            window.location = "http://meizano.github.io";
+        }
+        alert("Anda akan diarahkan ke halaman lain dalam 10 detik.");
+        setTimeout('Redirect()', 10000);
+    </script>
+    <form>
+        <input type="button" value="Print" onclick="window.print()" />
+    </form>
+</body>
+</html>

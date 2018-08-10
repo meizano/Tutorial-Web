@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript: Event Listener</title>
+</head>
+<body>
+    <script>
+        function over() {
+            document.write("Mouse Over");
+        }
+    </script>
+    <span>
+         <h2> bagian dalam SPAN </h2>
+      </span>
+    <div onmouseover="over()">
+        <h2> bagian dalam DIV </h2>
+    </div>
+    <script>
+        var span = document.getElementsByTagName('span');
+        span[0].addEventListener('mouseleave', function(event) {
+            document.write('Mouse Leave');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Layout: media queries</title>
+    <style>
+        .clearfix {
+            overflow: auto;
+            border: solid green 10px;
+        }
+        nav {
+            border: solid blue 10px;
+        }
+        section {
+            border: solid magenta 10px;
+        }
+        @media screen and (min-width:600px) {
+            nav {
+                float: left;
+                width: 25%;
+            }
+            section {
+                margin-left: 25%;
+            }
+        }
+        @media screen and (max-width:599px) {
+            nav li {
+                display: inline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clearfix">
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Taco Menu</li>
+                <li>Draft List</li>
+                <li>Hours</li>
+                <li>Directions</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+        <section>
+            The margin-left style for sections makes sure there is room for the nav. Otherwise the absolute and static elements would overlap
+        </section>
+        <section>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+        </section>
+    </div>
+</body>
+</html>

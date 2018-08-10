@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS Animation: Event</title>
+    <style>
+        .slidein {
+            animation-duration: 3s;
+            animation-name: slidein;
+            animation-iteration-count: 3;
+            animation-direction: alternate;
+        }
+        @keyframes slidein {
+            from {
+                margin-left: 100%;
+                width: 300%
+            }
+
+            to {
+                margin-left: 0%;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="watchme">Lihat saya bergerak</h1>
+    <ul id="output">
+    </ul>
+    <script>
+        function listener(event) {
+            var l = document.createElement("li");
+            switch (event.type) {
+                case "animationstart":
+                    l.innerHTML = "Mulai: " + event.elapsedTime;
+                    break;
+                case "animationend":
+                    l.innerHTML = "Selesai: " + event.elapsedTime;
+                    break;
+                case "animationiteration":
+                    l.innerHTML = "Mulai baru lagi " + event.elapsedTime;
+                    break;
+            }
+            document.getElementById("output").appendChild(l);
+        }
+
+        var element = document.getElementById("watchme");
+        element.addEventListener("animationstart", listener, false);
+        element.addEventListener("animationend", listener, false);
+        element.addEventListener("animationiteration", listener, false);
+
+        element.className = "slidein";
+    </script>
+</body>
+</html>

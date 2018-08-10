@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>Query Selector</title>
+</head>
+<body>
+    <p><span class="hewan">Kupu-kupu</span> yang lucu</p>
+    <p>Kemana engkau terbang</p>
+    <p>Hilir mudir mencari <span class="kawin">pasangan
+<span class="hewan">kupu-kupu</span></span>
+    </p>
+    <p>Dan bunga juga</p>
+    <script>
+        function count(selector) {
+            return document.querySelectorAll(selector).length;
+        }
+        console.log(count("p")); // Semua elemen <p>
+        // → 4
+        console.log(count(".hewan")); // Class hewan
+        // → 2
+        console.log(count("p .hewan")); // hewan di dalam  <p>
+        // → 2
+        console.log(count("p > .hewan")); // Direct child dari <p>
+        // → 1
+    </script>
+</body>
+</html>

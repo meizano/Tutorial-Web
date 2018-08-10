@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript: Perulangan</title>
+</head>
+<body>
+    <script>
+        // while ...
+        var urutan = 0;
+        document.write("Mulai Iterasi ");
+
+        while (urutan < 10) {
+            document.write("Urutan sekarang : " + urutan + "<br />");
+            urutan++;
+        }
+
+        document.write("Iterasi berhenti!");
+
+        // do ... while ...
+        var urutan = 0;
+
+        document.write("Mulai Iterasi" + "<br />");
+        do {
+            document.write("Urutan sekarang : " + urutan + "<br />");
+            urutan++;
+        }
+
+        while (urutan < 5);
+        document.write("Iterasi berhenti!");
+
+        // for
+        var urutan;
+        document.write("Mulai Iterasi" + "<br />");
+
+        for (urutan = 0; urutan < 10; urutan++) {
+            document.write("Urutan sekarang : " + urutan);
+            document.write("<br />");
+        }
+
+        document.write("Iterasi berhenti!");
+
+        // for in
+        var aProperty;
+        document.write("Navigator Object Properties<br /> ");
+
+        for (aProperty in navigator) {
+            document.write(aProperty);
+            document.write("<br />");
+        }
+        document.write("Keluar dari iterasi!");
+    </script>
+</body>
+</html>

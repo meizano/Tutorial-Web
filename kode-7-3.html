@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+    <title>Mengubah DOM</title>
+</head>
+<body>
+    <p>Satu</p>
+    <p>Dua</p>
+    <p>Tiga</p>
+    <script>
+        let paragraf = document.body.getElementsByTagName("p");
+        document.body.insertBefore(paragraf[2], paragraf[0]);
+    </script>
+</body>
+</html>

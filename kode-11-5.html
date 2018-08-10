@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Fetch API</title>
+</head>
+<body>
+    <h1>Fetch API</h1>
+    <button id="btnAmbilData">Ambil Data</button>
+    <div id="tampilanData"></div>
+    <script>
+        var tampilanData = document.getElementById("tampilanData");
+
+        function FetchAPI() {
+            url = 'api.php/mahasiswa';
+            fetch(url)
+                .then((resp) => resp.json())
+                .then(function(data) {
+                    tampilkanData(data);
+                })
+                .catch(function(error) {
+                    console.log(JSON.stringify(error));
+                });
+        }
+
+        //Fungsi untuk memudahkan buat Node
+        function createNode(element) {
+            // Membuat tipe elemen yang dilewatkan melalui parameter
+            return document.createElement(element);
+        }
+
+        //Fungsi untuk menambahkan sub node di bawah Node
+        function append(parent, el) {
+            // Append parameter kedua ke yang pertama
+            return parent.appendChild(el);
+        }
+
+        // Fungsi untuk menampilkan data
+        function tampilkanData(dataRAW) {
+            tampilanData.innerHTML = "Status: " + dataRAW.status;
+            // memakai fungsi pembuat elemen
+            let table = createNode('table'),
+                thead = createNode('thead'),
+                th1 = createNode('th'),
+                th2 = createNode('th');
+            // memasukkan judul
+            th1.innerHTML = 'Nama';
+            th2.innerHTML = 'NPM';
+            // memakai fungsi append ke parameter pertama
+            append(thead, th1);
+            append(thead, th2);
+            append(table, thead);
+
+            for (i = 0; i < dataRAW.data.length; i++) {
+                let tr = createNode('tr'),
+                    td1 = createNode('td'),
+                    td2 = createNode('td');
+                // memasukkan data ke dalam data tabel
+                td1.innerHTML = dataRAW.data[i].nama;
+                td2.innerHTML = dataRAW.data[i].npm;
+                // memakai fungsi append ke parameter pertama
+                append(tr, td1);
+                append(tr, td2);
+                append(table, tr);
+            }
+            append(tampilanData, table);
+        }
+        document.getElementById("btnAmbilData").addEventListener("click", FetchAPI);
+    </script>
+</body>
+</html>

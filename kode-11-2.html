@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>AJAX POST</title>
+</head>
+<body>
+    <h1>AJAX POST</h1>
+    <input type="text" name="nama" id="nama" placeholder="Ketik nama disini">
+    <input type="text" name="npm" id="npm" placeholder="Ketik NPM disini">
+    <button id="btnKirimData">Kirim Data</button>
+    <div id="tampilanData"></div>
+
+    <script>
+        var tampilanData = document.getElementById("tampilanData");
+
+        function AjaxPOST() {
+            var inputNama = document.getElementById("nama").value;
+            var inputNPM = document.getElementById("npm").value;
+
+            var data_file = "api.php/mahasiswa";
+            var params = "nama=" + inputNama + "&npm=" + inputNPM;
+            var http_request = new XMLHttpRequest();
+            try {
+                // Opera 8.0+, Firefox, Chrome, Safari
+                http_request = new XMLHttpRequest();
+            } catch (e) {
+                // Internet Explorer Browsers
+                try {
+                    http_request = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        http_request = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                        // Ada masalah
+                        alert("Browser rusak!");
+                        return false;
+                    }
+                }
+            }
+            http_request.onreadystatechange = function() {
+                if (http_request.readyState == 4) {
+                    // Fungsi JavaScript JSON.parse untuk parsing data JSON
+                    var jsonObj = JSON.parse(http_request.responseText);
+                    tampilkanData(jsonObj);
+                }
+            }
+            http_request.open("POST", data_file, true);
+            http_request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http_request.send(params);
+        }
+
+        // Fungsi untuk menampilkan data
+        function tampilkanData(dataRAW) {
+            tampilanData.innerHTML = "Status: " + dataRAW.status + "<br/>";
+            tampilanData.innerHTML += "ID data: " + dataRAW.id;
+        }
+        document.getElementById("btnKirimData").addEventListener("click", AjaxPOST);
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript: fungsi</title>
+</head>
+<body>
+    <script>
+        // fungsi tanpa parameter
+        function halo() {
+            document.write("halo disana!");
+        }
+
+        // fungsi dengan parameter
+        function concatenate(nama_depan, nama_belakang) {
+            var lengkap;
+            lengkap = nama_depan + ' ' + nama_belakang;
+            return lengkap;
+        }
+    </script>
+    <form>
+        <input type="button" onclick="halo('Zara', 7)" value="bilang halo">
+        <input type="button" onclick="document.write(concatenate('Kemala', 'Zara'))" value="Call Function">
+    </form>
+</body>
+</html>

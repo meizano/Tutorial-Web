@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>HTML5: Web Storage</title>
+    <script>
+        if (localStorage.hits) {
+            localStorage.hits = Number(localStorage.hits) + 1;
+        } else {
+            localStorage.hits = 1;
+        }
+        document.write("Jumlah hit :" + localStorage.hits);
+    </script>
+</head>
+<body>
+    <script>
+        if (localStorage.hits) {
+            localStorage.hits = Number(localStorage.hits) + 1;
+        } else {
+            localStorage.hits = 1;
+        }
+        document.write("Jumlah hit :" + localStorage.hits);
+    </script>
+    <ol>
+        <li>Refresh halaman untuk meningkatkan jumlah hit.</li>
+        <li>Tutup window dan buka lagi untuk melihat hasilnya.</li>
+    </ol>
+</body>
+</html>

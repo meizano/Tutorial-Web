@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Fetch API: PUT</title>
+</head>
+<body>
+    <h1>Fetch API: PUT</h1>
+    <input type="text" name="id" id="id" placeholder="Ketik ID data yang mau diganti disini">
+    <input type="text" name="nama" id="nama" placeholder="Ketik nama disini">
+    <input type="text" name="npm" id="npm" placeholder="Ketik NPM disini">
+    <button id="btnKirimData">Kirim Data</button>
+    <div id="tampilanData"></div>
+    <script>
+        var tampilanData = document.getElementById("tampilanData");
+
+        function fetchAPIPUT() {
+            var inputID = document.getElementById("id").value;
+            var inputNama = document.getElementById("nama").value;
+            var inputNPM = document.getElementById("npm").value;
+            var dataInput = "nama=" + inputNama + "&npm=" + inputNPM;
+            url = 'api.php/mahasiswa/' + inputID;
+            header = {'Content-Type':'application/x-www-form-urlencoded'};
+            fetch(url, {
+                    method: 'PUT',
+                    headers: header,
+                    body: dataInput
+                })
+                .then((resp) => resp.json())
+                .then(function (data) {
+                    tampilkanData(data);
+                })
+                .catch(function (error) {
+                    console.log(JSON.stringify(error));
+                });
+        }
+
+        // Fungsi untuk menampilkan data
+        function tampilkanData(dataRAW) {
+            tampilanData.innerHTML = "Status: " + dataRAW.status + "<br/>";
+            tampilanData.innerHTML += "Data -> ID: " + dataRAW.id;
+            tampilanData.innerHTML += ", Nama: " + dataRAW.nama;
+            tampilanData.innerHTML += ", NPM: " + dataRAW.npm;
+        }
+        document.getElementById("btnKirimData").addEventListener("click", fetchAPIPUT);
+    </script>
+</body>
+</html>
