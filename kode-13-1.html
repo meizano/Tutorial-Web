@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>IndexedDB</title>
+</head>
+
+<body>
+    <script>
+        var DBnama = "peminjaman";
+        var DBtabel = "pinjaman";
+        var db;
+
+        function buatDB(namaDB, namaTabel) {
+
+            // buat database
+            var request = window.indexedDB.open(namaDB, 3);
+
+            // cek apakah indexeddb didukung
+            request.onerror = function(event) {
+                console.log("Why didn't you allow my web app to use IndexedDB?!");
+                // Generic error handler for all errors targeted at this database's
+                // requests!
+                console.error("Database error: " + event.target.errorCode);
+            };
+            request.onsuccess = function(event) {
+                db = event.target.result;
+            };
+
+            /* --- */
+
+            // Persiapkan data, bisa didapatkan dari API/Web Service
+            const pinjamanData = [{
+                    due_date: "2019-07-02",
+                    loan_date: "2019-07-01",
+                    member_name: "Aldi",
+                    return_date: "2019-07-03",
+                    title: "Ekonomi"
+                },
+                {
+                    due_date: "2019-07-05",
+                    loan_date: "2019-07-01",
+                    member_name: "Aldi",
+                    return_date: null,
+                    title: "Ekonomi Baru"
+                }
+            ];
+
+            /* --- */
+
+            // Jika struktur database berubah, perlu update
+            // This event is only implemented in recent browsers
+            request.onupgradeneeded = function(event) {
+                // Save the IDBDatabase interface
+                var db = event.target.result;
+
+                var objectStore = db.createObjectStore(namaTabel, {
+                    autoIncrement: true
+                });
+
+                objectStore.transaction.oncomplete = function(event) {
+                    // Store values in the newly created objectStore.
+                    // membuat bisa dibaca tulis
+                    var pinjamanObjectStore = db.transaction(namaTabel, "readwrite").objectStore(namaTabel);
+
+                    pinjamanData.forEach(function(pinjama) {
+                        pinjamanObjectStore.add(pinjama);
+                    });
+                };
+            }
+        }
+
+        /**
+         * @param {string} store_name
+         * @param {string} mode either "readonly" or "readwrite"
+         */
+        function getObjectStore(store_name, mode) {
+            var tx = db.transaction(store_name, mode);
+            return tx.objectStore(store_name);
+        }
+
+        function bacaDB() {
+
+            var store = getObjectStore("pinjaman", 'readonly');
+
+
+            req = store.openCursor();
+            req.onsuccess = function(evt) {
+                var cursor = evt.target.result;
+
+                // If the cursor is pointing at something, ask for the data
+                if (cursor) {
+                    // console.log(cursor);
+                    req = store.get(cursor.key);
+                    req.onsuccess = function(evt) {
+                        var value = evt.target.result;
+                        console.log(value);
+                        console.log(value.due_date);
+                        console.log(value.loan_date);
+                        console.log(value.member_name);
+                        console.log(value.title);
+                    };
+
+                    // Move on to the next object in store
+                    cursor.continue();
+
+
+                } else {
+                    console.log("No more entries");
+                }
+            };
+        }
+
+        buatDB(DBnama, DBtabel);
+    </script>
+</body></html>
