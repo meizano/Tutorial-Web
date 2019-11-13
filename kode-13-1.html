@@ -7,7 +7,12 @@
 </head>
 
 <body>
+    <div id="status"></div>
+    <div id="isiData"></div>
     <script>
+        var status = document.querySelector("#status");
+        var isiData = document.querySelector("#isiData");
+
         var DBnama = "peminjaman";
         var DBtabel = "pinjaman";
         var db;
@@ -18,13 +23,13 @@
             var request = window.indexedDB.open(namaDB, 3);
 
             // cek apakah indexeddb didukung
-            request.onerror = function(event) {
+            request.onerror = function (event) {
                 console.log("Why didn't you allow my web app to use IndexedDB?!");
                 // Generic error handler for all errors targeted at this database's
                 // requests!
                 console.error("Database error: " + event.target.errorCode);
             };
-            request.onsuccess = function(event) {
+            request.onsuccess = function (event) {
                 db = event.target.result;
             };
 
@@ -51,7 +56,7 @@
 
             // Jika struktur database berubah, perlu update
             // This event is only implemented in recent browsers
-            request.onupgradeneeded = function(event) {
+            request.onupgradeneeded = function (event) {
                 // Save the IDBDatabase interface
                 var db = event.target.result;
 
@@ -59,16 +64,16 @@
                     autoIncrement: true
                 });
 
-                objectStore.transaction.oncomplete = function(event) {
+                objectStore.transaction.oncomplete = function (event) {
                     // Store values in the newly created objectStore.
                     // membuat bisa dibaca tulis
                     var pinjamanObjectStore = db.transaction(namaTabel, "readwrite").objectStore(namaTabel);
 
-                    pinjamanData.forEach(function(pinjama) {
+                    pinjamanData.forEach(function (pinjama) {
                         pinjamanObjectStore.add(pinjama);
                     });
                 };
-            }
+            };
         }
 
         /**
@@ -86,20 +91,21 @@
 
 
             req = store.openCursor();
-            req.onsuccess = function(evt) {
+            req.onsuccess = function (evt) {
                 var cursor = evt.target.result;
 
                 // If the cursor is pointing at something, ask for the data
                 if (cursor) {
                     // console.log(cursor);
                     req = store.get(cursor.key);
-                    req.onsuccess = function(evt) {
+                    req.onsuccess = function (evt) {
                         var value = evt.target.result;
                         console.log(value);
                         console.log(value.due_date);
                         console.log(value.loan_date);
                         console.log(value.member_name);
-                        console.log(value.title);
+                        console.log(value.title); 
+                        isiData.insertAdjacentHTML("afterend",value.due_date + " | " + value.loan_date + " | " + value.member_name + " | " + value.titles + "<br/>");
                     };
 
                     // Move on to the next object in store
@@ -114,4 +120,6 @@
 
         buatDB(DBnama, DBtabel);
     </script>
-</body></html>
+</body>
+
+</html>
